@@ -6,6 +6,11 @@ def start_session():
 def end_session():
     print("Ending habit session...")
 
+commands = {
+    "start": start_session,
+    "end": end_session
+}
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python habit.py [start|end]")
@@ -13,9 +18,7 @@ if __name__ == "__main__":
 
     command = sys.argv[1]
 
-    if command == "start":
-        start_session()
-    elif command == "end":
-        end_session()
+    if command in commands:
+        commands[command]()
     else:
         print("Unknown command")
