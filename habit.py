@@ -1,7 +1,19 @@
 import sys
+from datetime import datetime
+
 
 def start_session():
-    print("Starting habit session...")
+    habit = input("Habit: ")
+    before = input("How do you feel before starting? ")
+
+    start_time = datetime.now().isoformat()
+
+    with open(".current_session", "w") as f:
+        f.write(f"{habit}\n")
+        f.write(f"{before}\n")
+        f.write(f"{start_time}\n")
+
+    print("Session started.")
 
 def end_session():
     print("Ending habit session...")

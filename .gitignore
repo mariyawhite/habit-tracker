@@ -1,0 +1,4 @@
+.current_session
+habit_log.csv
+__pycache__/
+*.pyc
