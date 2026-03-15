@@ -1,8 +1,14 @@
 import sys
+import os
 from datetime import datetime
 
 
 def start_session():
+    if os.path.exists(".current_session"):
+        print("Error: session already active.")
+        print("Run `python3 habit.py end` first.")
+        return
+
     habit = input("Habit: ")
     before = input("How do you feel before starting? ")
 
