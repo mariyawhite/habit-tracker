@@ -22,7 +22,29 @@ def start_session():
     print("Session started.")
 
 def end_session():
-    print("Ending habit session...")
+    if not os.path.exists(".current_session"):
+        print("Error: no active session.")
+        print("Run `python3 habit.py start` first.")
+        return
+
+    completed = input("What did you do? ")
+    feelings_after = input("How do you feel after finishing? ")
+
+    end_time = datetime.now().isoformat()
+
+    with open(".current_session", "r") as f:
+        habit = f.readline().strip()
+        before = f.readline().strip()
+        start_time = f.readline().strip()
+
+    with open("habit_log.csv", "a") as log:
+        log.write(
+            f"{habit},{before},{completed},{feelings_after},{start_time},{end_time}\n"
+        )
+
+    os.remove(".current_session")
+
+    print("Session logged.")
 
 commands = {
     "start": start_session,
