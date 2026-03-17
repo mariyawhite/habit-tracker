@@ -37,9 +37,13 @@ def end_session():
         before = f.readline().strip()
         start_time = f.readline().strip()
 
+    start_dt = datetime.fromisoformat(start_time)
+    end_dt = datetime.fromisoformat(end_time)
+    duration = (end_dt - start_dt).total_seconds() / 60
+
     with open("habit_log.csv", "a") as log:
         log.write(
-            f"{habit},{before},{completed},{feelings_after},{start_time},{end_time}\n"
+            f"{habit},{before},{completed},{feelings_after},{start_time},{end_time},{duration:.1f}min\n"
         )
 
     os.remove(".current_session")
