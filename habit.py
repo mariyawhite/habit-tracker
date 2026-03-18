@@ -1,6 +1,7 @@
 import sys
 import os
 from datetime import datetime
+import csv
 
 
 def start_session():
@@ -10,13 +11,13 @@ def start_session():
         return
 
     habit = input("Habit: ")
-    before = input("How do you feel before starting? ")
+    feeling_before = input("How do you feel before starting? ")
 
     start_time = datetime.now().isoformat()
 
     with open(".current_session", "w") as f:
         f.write(f"{habit}\n")
-        f.write(f"{before}\n")
+        f.write(f"{feeling_before}\n")
         f.write(f"{start_time}\n")
 
     print("Session started.")
@@ -27,24 +28,45 @@ def end_session():
         print("Run `python3 habit.py start` first.")
         return
 
-    completed = input("What did you do? ")
-    feelings_after = input("How do you feel after finishing? ")
+    activity = input("What did you do? ")
+    feeling_after = input("How do you feel after finishing? ")
 
     end_time = datetime.now().isoformat()
 
     with open(".current_session", "r") as f:
         habit = f.readline().strip()
-        before = f.readline().strip()
+        feeling_before = f.readline().strip()
         start_time = f.readline().strip()
 
     start_dt = datetime.fromisoformat(start_time)
     end_dt = datetime.fromisoformat(end_time)
     duration = (end_dt - start_dt).total_seconds() / 60
 
-    with open("habit_log.csv", "a") as log:
-        log.write(
-            f"{habit},{before},{completed},{feelings_after},{start_time},{end_time},{duration:.1f}min\n"
-        )
+    file_exists = os.path.exists("habit_log.csv")
+
+    with open("habit_log.csv", "a", newline="") as log:
+        writer = csv.writer(log)
+
+        if not file_exists:
+            writer.writerow([
+                "habit",
+                "feeling_before",
+                "feeling_after",
+                "activity",
+                "start_time",
+                "end_time",
+                "duration_minutes"
+            ])
+
+        writer.writerow([
+            habit,
+            feeling_before,
+            feeling_after,
+            activity,
+            start_time,
+            end_time,
+            round(duration, 1)
+        ])
 
     os.remove(".current_session")
 
@@ -66,3 +88,4 @@ if __name__ == "__main__":
         commands[command]()
     else:
         print("Unknown command")
+
