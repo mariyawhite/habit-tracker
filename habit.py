@@ -10,7 +10,11 @@ def start_session():
         print("Run `python3 habit.py end` first.")
         return
 
-    habit = input("Habit: ")
+    habit = input("Habit: ").strip()
+
+    if not habit:
+        print("Error: habit cannot be empty.")
+        return
     feeling_before = input("How do you feel before starting? ")
 
     start_time = datetime.now().isoformat()
@@ -42,9 +46,12 @@ def end_session():
     end_dt = datetime.fromisoformat(end_time)
     duration = (end_dt - start_dt).total_seconds() / 60
 
-    file_exists = os.path.exists("habit_log.csv")
+    safe_habit = "_".join(habit.split()).lower()
+    filename = f"{safe_habit}_habit_log.csv"
 
-    with open("habit_log.csv", "a", newline="") as log:
+    file_exists = os.path.exists(filename)
+
+    with open(filename, "a", newline="") as log:
         writer = csv.writer(log)
 
         if not file_exists:
