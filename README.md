@@ -1,34 +1,69 @@
-## 🧭 Overview
+# Habit Tracker
 
-A CLI habit tracker that applies principles from cognitive behavioral therapy (CBT) and behavioral activation by logging emotional state before and after task completion.
+## Overview
 
-The tool is designed to demonstrate that motivation is not a prerequisite for action. Instead, it helps users observe how taking action can influence emotional state over time.
+A CLI habit tracker that logs emotional state before and after completing a task.
 
----
-
-## 🧠 Purpose
-
-Behavioral activation is based on the idea that waiting for motivation can reinforce avoidance. By acting first and tracking outcomes, users can build evidence that engagement in meaningful activities often leads to improved mood.
-
-This tracker supports that process by prompting users to:
-- Record how they feel before starting a task  
-- Complete the task regardless of initial motivation  
-- Reflect on how they feel afterward  
-
-Over time, this creates a dataset that helps challenge the belief that action depends on feeling ready.
+Designed to explore how taking action influences emotional state over time, based on principles from cognitive behavioral therapy (CBT) and behavioral activation.
 
 ---
 
-## 💬 Emotional Awareness
+## Purpose
 
-This project also draws on principles from Marshall Rosenberg’s *Nonviolent Communication (NVC)*.
+This tool is built around a simple idea:
 
-NVC emphasizes identifying and naming feelings as a way to better understand internal experiences and underlying needs. To support this, users are encouraged to use a structured vocabulary of emotions (such as a feelings wheel) rather than broad terms like “good” or “bad.”
+> motivation is not required to begin.
 
-This improves emotional precision and makes patterns in the data more meaningful.
+Instead of waiting to feel ready, users:
+- record how they feel before starting  
+- take action  
+- reflect on how they feel afterward  
+
+Over time, this creates a dataset that shows how action can change emotional state.
 
 ---
 
-## 🔗 Further Reading
+## Features
 
-- [The Power of Compassionate Communication (Nonviolent Communication overview)](https://www.solidgroundpsychiatry.com/post/the-power-of-compassionate-communication-exploring-marshall-rosenberg-s-nonviolent-communication)
+- CLI-based workflow (`start` / `end`)  
+- Tracks:
+  - habit  
+  - feeling before  
+  - activity performed  
+  - feeling after  
+  - session duration  
+- Per-habit CSV logging  
+- Session persistence using a temporary state file  
+
+---
+
+## Usage
+
+### Start a session
+```bash
+python3 habit.py start
+```
+
+### End a session
+```bash
+python3 habit.py end
+```
+
+## Design Notes
+
+- Encourages acting without relying on motivation  
+- Emphasizes reflection and feedback loops  
+- Uses simple file-based storage for transparency and portability  
+
+## Emotional Awareness
+
+The tracker works best when feelings are named with specificity (e.g., using a feelings wheel) rather than broad terms.
+
+This improves clarity in the data and helps identify patterns over time.
+
+Example feelings wheel can be found here:
+
+- [Exploring Marshall Rosenberg's Nonviolent Communication](https://www.solidgroundpsychiatry.com/post/the-power-of-compassionate-communication-exploring-marshall-rosenberg-s-nonviolent-communication)
+
+---
+
