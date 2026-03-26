@@ -62,5 +62,3 @@ Example feelings wheel can be found here:
 
 - [Exploring Marshall Rosenberg's Nonviolent Communication](https://www.solidgroundpsychiatry.com/post/the-power-of-compassionate-communication-exploring-marshall-rosenberg-s-nonviolent-communication)
 
----
-
