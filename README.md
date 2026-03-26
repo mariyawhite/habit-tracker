@@ -2,28 +2,15 @@
 
 ## Overview
 
-A CLI habit tracker that logs emotional state before and after completing a task.
+A CLI-based habit tracker that logs task sessions, including emotional state before and after completion.
 
-Designed to explore how taking action influences emotional state over time, based on principles from cognitive behavioral therapy (CBT) and behavioral activation.
+Built to explore lightweight state management, structured logging, and user interaction patterns using local file storage.
 
-
-## Purpose
-
-This tool is built around a simple idea:
-
-> motivation is not required to begin.
-
-Instead of waiting to feel ready, users:
-- record how they feel before starting  
-- take action  
-- reflect on how they feel afterward  
-
-Over time, this creates a dataset that shows how action can change emotional state.
-
+---
 
 ## Features
 
-- CLI-based workflow (`start` / `end`)  
+- CLI workflow (`start` / `end`)  
 - Tracks:
   - habit  
   - feeling before  
@@ -31,8 +18,10 @@ Over time, this creates a dataset that shows how action can change emotional sta
   - feeling after  
   - session duration  
 - Per-habit CSV logging  
-- Session persistence using a temporary state file  
+- Session persistence using a temporary `.current_session` file  
+- Input validation for required fields  
 
+---
 
 ## Usage
 
@@ -48,15 +37,27 @@ python3 habit.py end
 
 ## Design Notes
 
-- Encourages acting without relying on motivation  
-- Emphasizes reflection and feedback loops  
-- Uses simple file-based storage for transparency and portability  
+- Separates session lifecycle into start and end phases
+- Uses file-based state to persist in-progress sessions
+- Logs structured data for later analysis
+- Designed to be simple, transparent, and easy to extend
+
+## Context
+
+This project was inspired by behavioral activation principles, exploring the idea that taking action can influence motivation and emotional state.
+
+The tool encourages:
+
+- acting without waiting for motivation
+- reflecting on outcomes
+- observing patterns over time through logged data
+
 
 ## Emotional Awareness
 
-The tracker works best when feelings are named with specificity (e.g., using a feelings wheel) rather than broad terms.
+The tracker is more effective when feelings are described with specificity (e.g., using a feelings wheel) rather than broad terms.
 
-This improves clarity in the data and helps identify patterns over time.
+More precise input improves the quality of the logged data and makes patterns easier to identify over time.
 
 Example feelings wheel can be found here:
 
