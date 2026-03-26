@@ -6,7 +6,6 @@ A CLI habit tracker that logs emotional state before and after completing a task
 
 Designed to explore how taking action influences emotional state over time, based on principles from cognitive behavioral therapy (CBT) and behavioral activation.
 
----
 
 ## Purpose
 
@@ -21,7 +20,6 @@ Instead of waiting to feel ready, users:
 
 Over time, this creates a dataset that shows how action can change emotional state.
 
----
 
 ## Features
 
@@ -35,7 +33,6 @@ Over time, this creates a dataset that shows how action can change emotional sta
 - Per-habit CSV logging  
 - Session persistence using a temporary state file  
 
----
 
 ## Usage
 
